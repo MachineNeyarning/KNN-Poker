@@ -84,6 +84,10 @@ print(f'Accuracy Holdout: {acc_holdout*100}%')
 
 """# KNN com Holdout Repetido (70% treino - 30% teste)"""
 
+# esse demorou mais ainda, mais de uma hora
+# resultado: Media Accuracy Holdout Repetido: 60.343%
+# parametros: cv_shuffle = ShuffleSplit(n_splits = 10, test_size = 0.3, random_state = 42)
+
 from sklearn.model_selection import ShuffleSplit, cross_val_score
 
 classifier_repetido = KNeighborsClassifier(n_neighbors=3)
@@ -97,6 +101,9 @@ print('------------------------------------------------------------')
 print(f'Media Accuracy Holdout Repetido: {acc_repetido.mean()*100:.3f}%')
 
 """# KNN com Validacao Cruzada | K-FOLD"""
+
+# resultado: Media Accuracy K-Fold: 61.617%
+# parametros: acc_kfold = cross_val_score(classifier_repetido, x, y, cv=42)
 
 acc_kfold = cross_val_score(classifier_repetido, x, y, cv=42)
 
